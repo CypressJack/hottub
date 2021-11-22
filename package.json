@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/archaemedes/hottub#readme",
   "dependencies": {
-    "ds18b20": "^0.1.0"
+    "ds18b20": "^0.1.0",
+    "rpio": "^2.4.2"
   }
 }
