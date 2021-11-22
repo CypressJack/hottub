@@ -18,3 +18,5 @@ ds18b20.temperature(sensorId, function(err, value) {
     console.log('Current temperature is', value);
   }
 });
+
+console.log('Current temperature is' + ds18b20.temperatureSync(sensorId));
