@@ -35,7 +35,7 @@ function manageTemp() {
 
 
 function logTimeValue(){
-    console.log(runningTime.getTimeValues());
+    console.log(runningTime.getTimeValues().seconds);
 }
   
   setInterval(manageTemp, 1000);
