@@ -19,6 +19,7 @@
   "homepage": "https://github.com/archaemedes/hottub#readme",
   "dependencies": {
     "ds18b20": "^0.1.0",
+    "easytimer.js": "^4.5.1",
     "rpio": "^2.4.2"
   }
 }
