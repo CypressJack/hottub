@@ -10,13 +10,13 @@ rpio.open(11, rpio.OUTPUT, rpio.LOW);
 function manageTemp() {
     const curTempC = ds18b20.temperatureSync(sensorId);
     const curTempF = ( curTempC * (9/5) ) + 32;
-    console.log('Temp Celcius = ', curTempC);
     console.log('Temp Fahrenheit = ', curTempF);
     if (curTempF < setPoint){
         rpio.write(11, rpio.HIGH);
     } else {
         rpio.write(11, rpio.LOW);
     }
+    console.log('rpio pin status = ', rpio.read(11));
   }
   
   setInterval(manageTemp, 5000);
