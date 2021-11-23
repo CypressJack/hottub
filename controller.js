@@ -1,8 +1,14 @@
-var rpio = require('rpio');
-var ds18b20 = require('ds18b20');
+const rpio = require('rpio');
+const ds18b20 = require('ds18b20');
+const { Timer } = require("easytimer.js");
+
+const runningTime = new Timer();
+
 
 const sensorId = '28-011937c40830';
 let setPoint = 78;
+
+let status;
 
 // Initialize GPIO pin as low
 rpio.open(11, rpio.OUTPUT, rpio.LOW);
@@ -15,12 +21,23 @@ function manageTemp() {
 
     if (curTempF > setPoint) {
         rpio.write(11, rpio.LOW);
+        status = rpio.read(11);
+        runningTime.reset();
     }
     if (curTempF < setPoint && rpio.read(11) === 0){
         rpio.write(11, rpio.HIGH);
+        status = rpio.read(11);
+        runningTime.start();
     }
 
-    console.log('rpio pin status = ', rpio.read(11));
+    console.log('rpio pin status = ', status);
   }
+
+
+function logTimeValue(){
+    console.log(runningTime.getTimeValues());
+}
   
-  setInterval(manageTemp, 5000);
+  setInterval(manageTemp, 1000);
+
+  setInterval(logTimeValue, 5000);
