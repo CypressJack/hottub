@@ -16,4 +16,4 @@ function getTemp() {
   console.log('Current temperature is ' + ds18b20.temperatureSync(sensorId));
 }
 
-setInterval(getTemp, 5000);
+setInterval(getTemp, 500);
